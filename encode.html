@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Steganography</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="steganography.min.js"></script>
+</head>
+
+<style>
+    h5 {
+        color: black;
+        font-weight: bold;
+        margin: 15px 0;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div class=" row cont m-5">
+        <div class="col-md-4 px-2" style="border: 2px solid black">
+            <h5>Container</h5>
+            <div class="form-group col-md-12">
+                <label for="" class="col-md-12">Select Image</label>
+                <input class="ui btn form-control" type="file" name="pic" accept="image/*" onchange="readURL(this);" />
+            </div>
+            <div class="form-group col-md-12">
+                <label for="" class="col-md-12">Write some text which are you want to hide </label>
+                <div class="ui input col-md-12"><input id="text" class="form-control" type="text" /></div>
+            </div>
+            <div class="form-group col-md-12">
+                <button class="ui secondary button mx-3 btn btn-success " id="hideTextBtn" onclick="hideText()">
+                    Click Me to Hide Text
+                </button>
+            </div>
+        </div>
+
+        <div class="img-cont row col-md-8">
+            <div class="img1 col-md-6" style="border: 2px solid black;padding: 15px;">
+                <h5>Real Image</h5>
+                <img id="image1" src="" alt="" height="230" width="100%" />
+            </div>
+            <div class="col-md-6" style="border: 2px solid black;padding: 15px;">
+                <h5>Encoded Image</h5>
+                <img id="image2" src="" alt="" height="230" width="100%" />
+            </div>
+        </div>
+
+
+        <div class="row d-none" id="hiddenContent" style="margin: 100px 12px;justify-content: space-around;">
+            <h2> Text Hided Into Image Successfully !! 😊 </h2>
+        </div>
+
+
+        <div class="row my-5 col-md-12 d-none" id="hideMessage">
+            <div class="col-md-4" style="border: 2px solid black;padding: 15px;
+             height: 14rem;text-align: center;padding-top: 6rem;">
+                <input class="ui secondary button" type="file" 
+                name="pic" accept="image/*"
+                onchange="decode(this);" />
+            </div>
+
+            <div class="col-md-8" style="border: 2px solid blacks;padding: 15px; height: 14rem;">
+                <h5>Decoded Results : </h5>
+                <h2 id="decoded" style="text-align: center"></h2>
+            </div>
+        </div>
+
+        <a href="index.html"><button>Back to Home</button></a>
+
+        <script src="index.js"></script>
+
+        <script>
+            document.getElementById('hideTextBtn').addEventListener('click', function () {
+                document.getElementById('hiddenContent').setAttribute('class', 'row my-5 col-md-12');
+                setTimeout(() => {
+                    document.getElementById('hiddenContent').setAttribute('class', 'd-none')
+                }, 2000);
+                setTimeout(() => {
+                    document.getElementById('hideMessage').setAttribute('class', 'row my-5 col-md-12')
+                }, 3000);
+            })
+        </script>
+</body>
+
+</html>
